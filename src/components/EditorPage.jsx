@@ -5,11 +5,11 @@ import Footer from './Footer'
 
 function EditorPage() {
   const location = useLocation()
-  const { roomId } = location.state || {}
+  const { roomId, username } = location.state || {}
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header roomId={roomId} />
+      <Header roomId={roomId} username={username} />
       <EditorContainer />
       <Footer />
     </div>

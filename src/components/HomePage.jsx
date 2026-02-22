@@ -45,7 +45,7 @@ function HomePage() {
 
         <input
           type="text"
-          placeholder="Room ID (or leave empty to auto-generate)"
+          placeholder="Join an Existing Room (Room ID)"
           value={roomId}
           onChange={(e) => setRoomId(e.target.value)}
           className="w-full mb-4 px-4 py-2 rounded-lg bg-slate-700 text-white placeholder-slate-400 border border-slate-600 outline-none focus:border-emerald-500"
@@ -78,7 +78,7 @@ function HomePage() {
             Create new room
           </button>
           <p className="text-xs text-slate-500 mt-2">
-            Enter a custom Room ID above to create with that ID, or leave empty for UUID.
+            Upto 4 users can join a room at a time.
           </p>
         </div>
       </div>
