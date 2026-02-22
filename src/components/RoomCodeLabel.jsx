@@ -1,7 +1,7 @@
-function RoomCodeLabel() {
+function RoomCodeLabel({ roomId }) {
     return (
       <span className="text-sm font-mono text-slate-300">
-        Room: ABC123
+        Room: {roomId || '—'}
       </span>
     )
   }

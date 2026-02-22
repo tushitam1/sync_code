@@ -1,14 +1,15 @@
-import Header from './components/Header'
-import EditorContainer from './components/EditorContainer'
-import Footer from './components/Footer'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import HomePage from './components/HomePage'
+import EditorPage from './components/EditorPage'
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <EditorContainer />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/editor" element={<EditorPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
