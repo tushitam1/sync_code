@@ -1,10 +1,15 @@
 import EditorTextbox from './EditorTextbox'
 import OutputBox from './OutputBox'
 
-function EditorContainer() {
+function EditorContainer({ roomId, username, userColor, onAwarenessReady }) {
   return (
     <main className="flex-1 flex w-full bg-slate-800 overflow-hidden">
-      <EditorTextbox />
+      <EditorTextbox
+        roomId={roomId}
+        username={username}
+        userColor={userColor}
+        onAwarenessReady={onAwarenessReady}
+      />
       <OutputBox />
     </main>
   )

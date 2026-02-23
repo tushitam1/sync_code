@@ -1,35 +1,37 @@
-function UserStatus({ username }) {
-    const colors = [
-      'bg-emerald-500',
-      'bg-blue-500',
-      'bg-amber-500',
-      'bg-violet-500',
-    ]
-  
-    const currentUserInitial = username ? username.charAt(0).toUpperCase() : '?'
-    const currentUserColor = colors[0]
-  
-    return (
-      <div className="flex items-center gap-3">
-        <span className="text-sm text-slate-400">Connected</span>
-        <div className="flex -space-x-2">
+import TypingIndicator from './TypingIndicator'
+
+function UserStatus({ username, players = [] }) {
+  return (
+    <div className="flex flex-col items-center gap-1">
+    <div className="flex items-center gap-3">
+      <span className="text-sm text-slate-400">
+        {players.length > 0 ? `${players.length} connected` : 'Connected'}
+      </span>
+      <div className="flex -space-x-2">
+        {players.length > 0 ? (
+          players.map((p) => (
+            <div
+              key={p.id}
+              className="w-8 h-8 rounded-full flex items-center justify-center ring-2 ring-slate-900 shrink-0 text-white font-semibold text-sm"
+              style={{ backgroundColor: p.color || '#6b7280' }}
+              title={p.username}
+            >
+              {p.username ? p.username.charAt(0).toUpperCase() : '?'}
+            </div>
+          ))
+        ) : (
           <div
-            className={`w-8 h-8 rounded-full ${currentUserColor} flex items-center justify-center ring-2 ring-slate-900 shrink-0 text-white font-semibold text-sm`}
+            className="w-8 h-8 rounded-full bg-slate-500 flex items-center justify-center ring-2 ring-slate-900 shrink-0 text-white font-semibold text-sm"
             title={username || 'Current user'}
           >
-            {currentUserInitial}
+            {username ? username.charAt(0).toUpperCase() : '?'}
           </div>
-          {colors.slice(1).map((color, i) => (
-            <div
-              key={i}
-              className={`w-8 h-8 rounded-full ${color} flex items-center justify-center ring-2 ring-slate-900 shrink-0 text-white text-xs opacity-75`}
-            >
-              +
-            </div>
-          ))}
-        </div>
+        )}
       </div>
-    )
-  }
+    </div>
+    <TypingIndicator />
+    </div>
+  )
+}
   
   export default UserStatus
